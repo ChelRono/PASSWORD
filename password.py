@@ -9,3 +9,11 @@ class Password:
 
 
         self.user_name = user_name
+
+    def save_password(self):
+
+        '''
+        save_password method saves password objects into password_list
+        '''
+
+        Password.password_list.append(self)
