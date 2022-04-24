@@ -1,32 +1,11 @@
-import string
-import random
+class Password:
+    """
+    Class that generates new instances of passwords
+    """
 
-'''
- random password generator
-'''
+    password_list=[]
 
-print('Welcome to password generator!')
+    def __init__(self,user_name):
 
-#input length of password
 
-length=int(input('\nEnter length of password:'))
-
-#define data
-
-lower=string.ascii_lowercase
-upper=string.ascii_uppercase
-numbers=string.digits
-symbols=string.punctuation
-
-all=lower+upper+numbers+symbols
-
-#random
-
-temp=random.sample(all,length)
-
-#password
-
-password="".join(temp)
-
-print(password)
-
+        self.user_name = user_name
