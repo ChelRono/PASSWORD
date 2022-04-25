@@ -17,3 +17,10 @@ class Password:
         '''
 
         Password.password_list.append(self)
+
+    @classmethod
+    def display_passwords(cls):
+        '''
+        method that returns the password list
+        '''
+        return cls.password_list
