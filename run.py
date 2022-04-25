@@ -7,3 +7,9 @@ def create_password(user_name, user_password):
     '''
     new_password = Password(user_name, user_password)
     return new_password
+
+def save_passwords(password):
+    '''
+    Function to save contact
+    '''
+    password.save_password()
