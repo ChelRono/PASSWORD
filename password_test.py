@@ -55,7 +55,7 @@ class TestPassword(unittest.TestCase):
         '''
 
         self.assertEqual(self.new_password.user_name,"Val")
-        self.assertEqual(self.new_password.user_password,"val123")
+        self.assertEqual(self.new_password.password,"val123")
         
     def test_save_password(self):
         '''
@@ -77,7 +77,7 @@ class TestPassword(unittest.TestCase):
             objects to our password_list
             '''
             self.new_password.save_password()
-            test_password = Password("Test", "user", "bye14") # new password
+            test_password = Password("Test", "bye14") # new password
             test_password.save_password()
             self.assertEqual(len(Password.password_list),2)
    
