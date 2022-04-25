@@ -31,4 +31,10 @@ def check_existing_passwords(user_name):
     '''
     Function that check if a password exists with that number and return a Boolean
     '''
-    return Password.password_exist(user_name)    
+    return Password.password_exist(user_name)  
+
+def display_passwords():
+    '''
+    Function that returns all the saved passwords
+    '''
+    return Password.display_passwords()
