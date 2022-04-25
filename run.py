@@ -62,7 +62,7 @@ def main():
                             print ("user_password.....")
                             user_password = input()
 
-                             save_passwords(create_password(user_password, user_name)) # create and save new password.
+                            save_passwords(create_password(user_password, user_name)) # create and save new password.
                             print ('\n')
                             print(f"New password {user_name} created")
                             print ('\n')
