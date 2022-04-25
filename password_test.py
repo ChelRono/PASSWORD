@@ -46,7 +46,7 @@ class TestPassword(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_password = Password("Val")
+        self.new_password = Password("Val", "val123")
 
 
     def test_init(self):
@@ -55,6 +55,7 @@ class TestPassword(unittest.TestCase):
         '''
 
         self.assertEqual(self.new_password.user_name,"Val")
+        self.assertEqual(self.new_password.user_password,"val123")
         
     def test_save_password(self):
         '''
@@ -64,7 +65,6 @@ class TestPassword(unittest.TestCase):
         self.new_password.save_password() # saving the new password
         self.assertEqual(len(Password.password_list),1)
 
-   
     def tearDown(self):
             '''
             tearDown method that does clean up after each test case has run.
@@ -77,7 +77,7 @@ class TestPassword(unittest.TestCase):
             objects to our password_list
             '''
             self.new_password.save_password()
-            test_password = Password("Test") # new password
+            test_password = Password("Test", "user", "bye14") # new password
             test_password.save_password()
             self.assertEqual(len(Password.password_list),2)
    
@@ -88,6 +88,21 @@ class TestPassword(unittest.TestCase):
         '''
 
         Password.password_list.remove(self)
+
+    @classmethod
+    def find_by_user_name(cls,user_name):
+        '''
+        Method that takes in a number and returns a username that matches that name.
+
+        Args:
+            name: username to search for
+        Returns :
+            password of person that matches the username
+        '''
+
+        for password in cls.password_list:
+            if password.username == user_name:
+                return user_name
 
     @classmethod
     def password_exist(cls,user_name):
@@ -102,7 +117,9 @@ class TestPassword(unittest.TestCase):
             if password.user_name == user_name:
                     return True
 
-        return False
+            return False
+
+        
 
     def test_display_all_passwords(self):
         '''
@@ -110,8 +127,6 @@ class TestPassword(unittest.TestCase):
         '''
 
         self.assertEqual(Password.display_passwords(),Password.password_list)
-
-
 
 if __name__ == '__main__':
     unittest.main()
