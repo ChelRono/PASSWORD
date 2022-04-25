@@ -61,3 +61,44 @@ def main():
 
                             print ("user_password.....")
                             user_password = input()
+
+                             save_passwords(create_password(user_password, user_name)) # create and save new password.
+                            print ('\n')
+                            print(f"New password {user_name} created")
+                            print ('\n')
+
+                    elif short_code == 'dp':
+
+                            if display_passwords():
+                                    print("Here is a list of all your passwords")
+                                    print('\n')
+
+                                    for password in display_passwords():
+                                            print(f"{password.user_name} {password.password}")
+
+                                    print('\n')
+                            else:
+                                    print('\n')
+                                    print("You dont seem to have any passwords saved yet")
+                                    print('\n')
+
+                    elif short_code == 'fc':
+
+                            print("Enter the username you want to search for")
+
+                            search_password = input()
+                            if check_existing_passwords(search_password):
+                                    search_password = find_password(search_password)
+                                    print(f"{search_password.user_name}")
+                                    print('-' * 20)
+
+                                    print(f"user_name.......{search_password.user_name}")
+                        
+                            else:
+                                    print("That password does not exist")
+
+                    elif short_code == "ex":
+                            print("Bye .......")
+                            break
+                    else:
+                            print("I really didn't get that. Please use the short codes")
