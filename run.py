@@ -38,3 +38,26 @@ def display_passwords():
     Function that returns all the saved passwords
     '''
     return Password.display_passwords()
+
+
+def main():
+    print("Hello Welcome to your contact list. What is your name?")
+    user_name = input()
+
+    print(f"Hello {user_name}. what would you like to do?")
+    print('\n')
+
+    while True:
+                    print("Use these short codes : cp - create a new password, dp - display passwords, fp -find a password, ex -exit the password list ")
+
+                    short_code = input().lower()
+
+                    if short_code == 'cp':
+                            print("New Password")
+                            print("-"*10)
+
+                            print ("user_name.....")
+                            user_name = input()
+
+                            print ("user_password.....")
+                            user_password = input()
