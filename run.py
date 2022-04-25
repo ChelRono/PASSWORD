@@ -13,3 +13,10 @@ def save_passwords(password):
     Function to save contact
     '''
     password.save_password()
+
+
+def del_password(password):
+    '''
+    Function to delete a contact
+    '''
+    password.delete_password()    
