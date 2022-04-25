@@ -89,6 +89,29 @@ class TestPassword(unittest.TestCase):
 
         Password.password_list.remove(self)
 
+    @classmethod
+    def password_exist(cls,user_name):
+        '''
+        Method that checks if a password exists from the password list.
+        Args:
+            password: Password to search if it exists
+        Returns :
+            Boolean: True or false depending if the password exists
+        '''
+        for user_name in cls.password_list:
+            if password.user_name == user_name:
+                    return True
+
+        return False
+
+    def test_display_all_passwords(self):
+        '''
+        method that returns a list of all passwords saved
+        '''
+
+        self.assertEqual(Password.display_passwords(),Password.password_list)
+
+
 
 if __name__ == '__main__':
     unittest.main()
