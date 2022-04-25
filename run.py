@@ -20,3 +20,15 @@ def del_password(password):
     Function to delete a contact
     '''
     password.delete_password()    
+
+def find_password(password):
+    '''
+    Function that finds a password by username and returns the password
+    '''
+    return Password.find_by_password(password)
+
+def check_existing_passwords(user_name):
+    '''
+    Function that check if a password exists with that number and return a Boolean
+    '''
+    return Password.password_exist(user_name)    
