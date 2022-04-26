@@ -1,47 +1,53 @@
 #!/usr/bin/env python3.8
-from credentials import Password
+from credentials import Credentials
+from User import User
 
-def create_password(user_name, user_password):
+def create_credentials(user_name, user_password):
     '''
-    Function to create a new contact
+    Function to create a new credentia;
     '''
-    new_password = Password(user_name, user_password)
-    return new_password
+    new_credentials = Credentials(user_name, user_password)
+    return new_credentials
 
-def save_passwords(password):
+def save_credentials(password):
     '''
-    Function to save contact
+    Function to save credentials
     '''
-    password.save_password()
+    password.save_credentials()
 
-
-def del_password(password):
+def del_credentials(password):
     '''
-    Function to delete a contact
+    Function to delete a credentials
     '''
-    password.delete_password()    
+    password.delete_credentials()
 
-def find_password(password):
+def find_credentials(password):
     '''
     Function that finds a password by username and returns the password
     '''
-    return Password.find_by_password(password)
+    return Credentials.find_by_credentials(password)
 
-def check_existing_passwords(user_name):
+def check_existing_credentials(user_name):
     '''
     Function that check if a password exists with that number and return a Boolean
     '''
-    return Password.password_exist(user_name)  
+    return Credentials.credentials_exist(user_name)
 
-def display_passwords():
+def display_credentials():
     '''
     Function that returns all the saved passwords
     '''
-    return Password.display_passwords()
+    return Credentials.display_credentials()
 
+def create_user(password):
+    '''
+    Function to create a new credentia;
+    '''
+    new_user = User(password)
+    return new_user
 
 def main():
-    print("Hello Welcome to your contact list. What is your name?")
+    print("Hello Welcome to your credentials list. What is your name?")
     user_name = input()
 
     print(f"Hello {user_name}. what would you like to do?")
@@ -62,18 +68,18 @@ def main():
                             print ("user_password.....")
                             user_password = input()
 
-                            save_passwords(create_password(user_password, user_name)) # create and save new password.
+                            save_credentials(create_credentials(user_password, user_name)) # create and save new password.
                             print ('\n')
-                            print(f"New password {user_name} created")
+                            print(f"New credentials {user_name} created")
                             print ('\n')
 
                     elif short_code == 'dp':
 
-                            if display_passwords():
+                            if display_credentials():
                                     print("Here is a list of all your passwords")
                                     print('\n')
 
-                                    for password in display_passwords():
+                                    for password in display_credentials():
                                             print(f"{password.user_name} {password.password}")
 
                                     print('\n')
@@ -86,9 +92,9 @@ def main():
 
                             print("Enter the username you want to search for")
 
-                            search_password = input()
-                            if check_existing_passwords(search_password):
-                                    search_password = find_password(search_password)
+                            search_credentials = input()
+                            if check_existing_credentials(search_password):
+                                    search_password = find_credentials(search_password)
                                     print(f"{search_password.user_name}")
                                     print('-' * 20)
 
