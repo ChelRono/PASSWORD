@@ -1,39 +1,8 @@
-from credentials import Password
+from credentials import Credentials
 import unittest
-import random
-import string
-
-'''
- random password generator
-'''
-
-print('Welcome to password generator!')
-
-#input length of password
-
-length=int(input('\nEnter length of password:'))
-
-#define data
-
-lower=string.ascii_lowercase
-upper=string.ascii_uppercase
-numbers=string.digits
-symbols=string.punctuation
-
-all=lower+upper+numbers+symbols
-
-#random
-
-temp=random.sample(all,length)
-
-#password
-
-password="".join(temp)
-
-print(password)
 
 
-class TestPassword(unittest.TestCase):
+class TestCredentials(unittest.TestCase):
 
     '''
     Test class that defines test cases for the password class behaviours.
@@ -46,7 +15,7 @@ class TestPassword(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_password = Password("Val", "val123")
+        self.new_credentials = Credentials("Val", "val123")
 
 
     def test_init(self):
@@ -54,40 +23,40 @@ class TestPassword(unittest.TestCase):
         test_init test case to test if the object is initialized properly
         '''
 
-        self.assertEqual(self.new_password.user_name,"Val")
-        self.assertEqual(self.new_password.password,"val123")
+        self.assertEqual(self.new_credentials.user_name,"Val")
+        self.assertEqual(self.new_credentials.password,"val123")
         
-    def test_save_password(self):
+    def test_save_credentials(self):
         '''
         test_save_password test case to test if the password object is saved into
          the password list
         '''
-        self.new_password.save_password() # saving the new password
-        self.assertEqual(len(Password.password_list),1)
+        self.new_credentials.save_credentials() # saving the new credentials
+        self.assertEqual(len(Credentials.credentials_list),1)
 
     def tearDown(self):
             '''
             tearDown method that does clean up after each test case has run.
             '''
-            Password.password_list = []
+            Credentials.credentials_list = []
 
-    def test_save_multiple_passwords(self):
+    def test_save_multiple_credentials(self):
             '''
-            test_save_multiple_password to check if we can save multiple password
-            objects to our password_list
+            test_save_multiple_credentials to check if we can save multiple credentials
+            objects to our credential_list
             '''
-            self.new_password.save_password()
-            test_password = Password("Test", "bye14") # new password
-            test_password.save_password()
-            self.assertEqual(len(Password.password_list),2)
+            self.new_credentials.save_credentials()
+            test_credentials = Credentials("Test", "bye14") # new credentials
+            test_credentials.save_credentials()
+            self.assertEqual(len(Credentials.credentials_list),2)
    
-    def delete_password(self):
+    def delete_credentials(self):
 
         '''
-        delete_contact method deletes a saved contact from the contact_list
+        delete_credential method deletes a saved credential from the credential_list
         '''
 
-        Password.password_list.remove(self)
+        Credentials.credentials_list.remove(self)
 
     @classmethod
     def find_by_user_name(cls,user_name):
@@ -100,33 +69,33 @@ class TestPassword(unittest.TestCase):
             password of person that matches the username
         '''
 
-        for password in cls.password_list:
-            if password.username == user_name:
+        for credentials in cls.credentials_list:
+            if credentials.username == user_name:
                 return user_name
 
     @classmethod
-    def password_exist(cls,user_name):
+    def credentials_exist(cls,user_name):
         '''
-        Method that checks if a password exists from the password list.
+        Method that checks if a credential exists from the credential list.
         Args:
-            password: Password to search if it exists
+            credential: Credentials to search if it exists
         Returns :
-            Boolean: True or false depending if the password exists
+            Boolean: True or false depending if the credential exists
         '''
-        for user_name in cls.password_list:
-            if password.user_name == user_name:
+        for user_name in cls.credentials_list:
+            if Credentials.user_name == user_name:
                     return True
 
             return False
 
         
 
-    def test_display_all_passwords(self):
+    def test_display_all_credentials(self):
         '''
-        method that returns a list of all passwords saved
+        method that returns a list of all credentials saved
         '''
 
-        self.assertEqual(Password.display_passwords(),Password.password_list)
+        self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)
 
 if __name__ == '__main__':
     unittest.main()
