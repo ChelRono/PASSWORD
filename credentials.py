@@ -1,9 +1,9 @@
-class Password:
+class Credentials:
     """
     Class that generates new instances of passwords
     """
 
-    password_list=[]
+    credentials_list=[]
 
     def __init__(self,user_name, user_password):
 
@@ -11,17 +11,17 @@ class Password:
         self.user_name = user_name
         self.password=user_password
  
-    def save_password(self):
+    def save_credentials(self):
 
         '''
         save_password method saves password objects into password_list
         '''
 
-        Password.password_list.append(self)
+        Credentials.credentials_list.append(self)
 
     @classmethod
-    def display_passwords(cls):
+    def display_credentials(cls):
         '''
-        method that returns the password list
+        method that returns the credentials list
         '''
-        return cls.password_list
+        return cls.credentials_list

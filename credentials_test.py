@@ -1,4 +1,4 @@
-from password import Password
+from credentials import Password
 import unittest
 import random
 import string

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.8
-from password import Password
+from credentials import Password
 
 def create_password(user_name, user_password):
     '''
